@@ -3,8 +3,11 @@ package ro.alex;
 import java.util.Date;
 import java.util.Scanner;
 
+import static ro.alex.ManageInvioces.invoices;
+
 public class CreateInvoice {
 
+    static int listIndex = 0;
     public static void create() {
         Scanner read = new Scanner(System.in);
         System.out.print("Company name = ");
@@ -23,9 +26,12 @@ public class CreateInvoice {
         Date date = new Date(year,month,day);
         System.out.print("Cif = ");
         int cif = read.nextInt();
-        System.out.print("Inoice total = ");
-        double invoiceTotal = read.nextInt();
+        System.out.print("Invoice total = ");
+        double invoiceTotal = read.nextDouble();
         Invoice invoice1 = new Invoice(companyName,serialNumber,address,date,cif,invoiceTotal);
+        invoice1.setIndex(listIndex);
+        invoices.add(invoice1);
+        listIndex++;
         System.out.println("INVOICE CREATED!");
     }
 }

@@ -3,7 +3,7 @@ package ro.alex;
 import java.util.Date;
 
 public class Invoice {
-
+    private int index;
     int serialNumber;
     String companyName;
     Address address;
@@ -18,5 +18,11 @@ public class Invoice {
         this.date = date;
         this.cif = cif;
         this.invoiceTotal = invoiceTotal;
+    }
+    public void setIndex(int index){
+        this.index = index;
+    }
+    public int getIndex(){
+        return index;
     }
 }
