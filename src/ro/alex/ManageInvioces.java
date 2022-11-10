@@ -12,7 +12,7 @@ public class ManageInvioces {
         int x = 0;
         for (Invoice invoice : invoices) {
             System.out.println("------------------");
-            System.out.println(x);
+            System.out.println("INDEX : " + x);
             System.out.println();
             System.out.println(invoice.serialNumber);
             System.out.println(invoice.companyName);

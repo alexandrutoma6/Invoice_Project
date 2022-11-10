@@ -3,19 +3,20 @@ package ro.alex;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner read= new Scanner(System.in);
-        String option;
+        int option;
 
 
         do{
             System.out.println();
             PrintOptions.printOption();
             System.out.println();
-            option = read.nextLine();
+            System.out.print(":-:  ");
+            option = read.nextInt();
             OptionSwitcher.choseOption(option);
             System.out.println();
-        }while(option == "0");
+        }while(option != 0);
 
 
     }

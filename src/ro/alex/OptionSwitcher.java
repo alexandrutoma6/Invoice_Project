@@ -1,19 +1,57 @@
 package ro.alex;
 
+import java.sql.SQLOutput;
+
 public class OptionSwitcher {
 
-    public static void choseOption(String option){
+    public static void choseOption(int option) throws Exception {
         switch (option){
-            case "1": CreateInvoice.create();
-            case "2":
+            case 1:
+                System.out.println("CREARE FACTURA");
+                System.out.println();
+                CreateInvoice.create();
+                break;
+
+            case 2:
+                System.out.println("MODIFICARE FACTURA");
+                System.out.println();
                 ManageInvioces.printInvoices();
+                System.out.print("Aleteti index-ul facrurii pe care doriti sa o modificati: ");
                 int index = OptionReader.readInt();
                 printArguments();
+                System.out.println();
+                System.out.print("Aleteti argumentul pe care vreti sa il modificati: ");
                 int argument = OptionReader.readInt();
-            case "3":
-            case "4": //ManageInvioces;
-            case "0":
+                argumentOption(index,argument);
+
+                break;
+
+            case 3:
+                System.out.println("STERGERE FACTURA");
+                System.out.println();
+                System.out.println();
+                ManageInvioces.printInvoices();
+                System.out.print("Aleteti index-ul facrurii pe care doriti sa o stregeti: ");
+                index = OptionReader.readInt();
+                RemoveInvoice.invoiceRemove(index);
+                System.out.println();
+                System.out.println("FACUTRA STEARSA!");
+                break;
+
+            case 4:
+                System.out.println("ADMINISTRARE FACTURI");
+                ManageInvioces.printInvoices();
+                System.out.println();
+                break;
+
+            case 0:
                 System.out.println("EXIT!");
+                break;
+            default:
+                System.out.print("ATI INTRODUS O VALOARE GRESITA!");
+
+
+
         }
     }
 
@@ -21,11 +59,21 @@ public class OptionSwitcher {
         switch (argument){
             case 1:
                 System.out.print("New Serial Number : ");
-                ModifyInvoice.invoiceModify(index,OptionReader.readInt());
+                int x = OptionReader.readInt();
+                ModifyInvoice.invoiceModify(index,x);
+                System.out.println();
+                System.out.println("FACTURA MODIFICATA!");
+                System.out.println();
+                break;
 
             case 2:
                 System.out.print("New Company Name : ");
-                ModifyInvoice.invoiceModify(index,OptionReader.readString());
+                String s = OptionReader.readString();
+                ModifyInvoice.invoiceModify(index,s);
+                System.out.println();
+                System.out.println("FACTURA MODIFICATA!");
+                System.out.println();
+                break;
         }
     }
 

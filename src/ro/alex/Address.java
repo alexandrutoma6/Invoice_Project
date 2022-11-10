@@ -19,6 +19,12 @@ public class Address {
         this.postCode = postCode;
     }
 
+    @Override
+    public String toString() {
+        String address = "Strada " + street + ", numar: "+number+", cod postal: "+postCode +"\n" + city + " " + county + " " + country;
+        return address;
+    }
+
     public static Address createAddress() {
         Scanner read = new Scanner(System.in);
         System.out.print("Country = ");
@@ -37,4 +43,5 @@ public class Address {
         Address returnAddress = new Address(country,city,county,street,number,postCode);
         return returnAddress;
     }
+
 }

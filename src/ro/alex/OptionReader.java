@@ -6,7 +6,7 @@ public class OptionReader {
     static Scanner read = new Scanner(System.in);
     public static int readInt() {
 
-        System.out.println("-->:");
+        System.out.print("-->:");
         return read.nextInt();
     }
     public static String readString(){

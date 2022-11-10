@@ -3,15 +3,16 @@ package ro.alex;
 import java.util.Date;
 import java.util.Scanner;
 
+
 import static ro.alex.ManageInvioces.invoices;
 
 public class CreateInvoice {
 
     static int listIndex = 0;
-    public static void create() {
+    public static void create(){
         Scanner read = new Scanner(System.in);
         System.out.print("Company name = ");
-        String companyName = read.next();
+        String companyName = read.nextLine();
         System.out.print("Serial number = ");
         int serialNumber = read.nextInt();
         System.out.println("ADDRESS:");
