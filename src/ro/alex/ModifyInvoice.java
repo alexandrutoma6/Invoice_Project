@@ -33,12 +33,12 @@ public class ModifyInvoice {
         invoices.add(index,returnInvoice);
     }
 
-//    public static void invoiceModify(int index,int cif) {
-//        Invoice returnInvoice = invoices.get(index);
-//        returnInvoice.cif = cif;
-//        invoices.remove(index);
-//        invoices.add(index,returnInvoice);
-//    }
+    public static void invoiceModify(int index,int cif,int q ) {
+        Invoice returnInvoice = invoices.get(index);
+        returnInvoice.cif = cif;
+        invoices.remove(index);
+        invoices.add(index,returnInvoice);
+    }
 
     public static void invoiceModify(int index,double invoiceTotal) {
         Invoice returnInvoice = invoices.get(index);

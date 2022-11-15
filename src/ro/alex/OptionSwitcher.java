@@ -1,6 +1,9 @@
 package ro.alex;
 
 import java.sql.SQLOutput;
+import java.util.Date;
+
+import static ro.alex.ManageInvioces.invoices;
 
 public class OptionSwitcher {
 
@@ -13,35 +16,46 @@ public class OptionSwitcher {
                 break;
 
             case 2:
-                System.out.println("MODIFICARE FACTURA");
-                System.out.println();
-                ManageInvioces.printInvoices();
-                System.out.print("Aleteti index-ul facrurii pe care doriti sa o modificati: ");
-                int index = OptionReader.readInt();
-                printArguments();
-                System.out.println();
-                System.out.print("Aleteti argumentul pe care vreti sa il modificati: ");
-                int argument = OptionReader.readInt();
-                argumentOption(index,argument);
-
+                if(invoices.isEmpty())
+                    System.out.println("NU EXISTA FACTURI");
+                else {
+                    System.out.println("MODIFICARE FACTURA");
+                    System.out.println();
+                    ManageInvioces.printInvoices();
+                    System.out.print("Aleteti index-ul facrurii pe care doriti sa o modificati: ");
+                    int index = OptionReader.readInt();
+                    printArguments();
+                    System.out.println();
+                    System.out.print("Aleteti argumentul pe care vreti sa il modificati: ");
+                    int argument = OptionReader.readInt();
+                    argumentOption(index,argument);
+                }
                 break;
 
             case 3:
-                System.out.println("STERGERE FACTURA");
-                System.out.println();
-                System.out.println();
-                ManageInvioces.printInvoices();
-                System.out.print("Aleteti index-ul facrurii pe care doriti sa o stregeti: ");
-                index = OptionReader.readInt();
-                RemoveInvoice.invoiceRemove(index);
-                System.out.println();
-                System.out.println("FACUTRA STEARSA!");
+                if(invoices.isEmpty())
+                    System.out.println("NU EXISTA FACTURI");
+                else {
+                    System.out.println("STERGERE FACTURA");
+                    System.out.println();
+                    System.out.println();
+                    ManageInvioces.printInvoices();
+                    System.out.print("Aleteti index-ul facrurii pe care doriti sa o stregeti: ");
+                    int index = OptionReader.readInt();
+                    RemoveInvoice.invoiceRemove(index);
+                    System.out.println();
+                    System.out.println("FACUTRA STEARSA!");
+                }
                 break;
 
             case 4:
-                System.out.println("ADMINISTRARE FACTURI");
-                ManageInvioces.printInvoices();
-                System.out.println();
+                if(invoices.isEmpty())
+                    System.out.println("NU EXISTA FACTURI");
+                else {
+                    System.out.println("ADMINISTRARE FACTURI");
+                    ManageInvioces.printInvoices();
+                    System.out.println();
+                }
                 break;
 
             case 0:
@@ -74,16 +88,61 @@ public class OptionSwitcher {
                 System.out.println("FACTURA MODIFICATA!");
                 System.out.println();
                 break;
+
+            case 3:
+                System.out.print("New Address : ");
+                Address adr = Address.createAddress();
+                ModifyInvoice.invoiceModify(index,adr);
+                System.out.println();
+                System.out.println("FACTURA MODIFICATA!");
+                System.out.println();
+                break;
+
+            case 4:
+                System.out.println("New DATE : ");
+                System.out.print("Day : ");
+                int d = OptionReader.readInt();
+                System.out.print("Month : ");
+                int m = OptionReader.readInt();
+                System.out.print("Year : ");
+                int y = OptionReader.readInt();
+                Date date = new Date(y,m,d);
+                ModifyInvoice.invoiceModify(index,date);
+                System.out.println();
+                System.out.println("FACTURA MODIFICATA!");
+                System.out.println();
+                break;
+
+            case 5:
+                System.out.print("New CIF : ");
+                int z = OptionReader.readInt();
+                ModifyInvoice.invoiceModify(index,z,0);
+                System.out.println();
+                System.out.println("FACTURA MODIFICATA!");
+                System.out.println();
+                break;
+
+            case 6:
+                System.out.print("New Invoice Total : ");
+                double doub = OptionReader.readDouble();
+                ModifyInvoice.invoiceModify(index,doub);
+                System.out.println();
+                System.out.println("FACTURA MODIFICATA!");
+                System.out.println();
+                break;
+
+            default:
+                System.out.println("Error");
         }
     }
 
     public static void printArguments(){
         System.out.println();
-        System.out.print("1.Serial Number ");
-        System.out.print("2.Company Name ");
-        System.out.print("3.Address ");
-        System.out.print("4.Date ");
-        System.out.print("5.Cif ");
-        System.out.print("6.Invoice Total ");
+        System.out.println("1.Serial Number ");
+        System.out.println("2.Company Name ");
+        System.out.println("3.Address ");
+        System.out.println("4.Date ");
+        System.out.println("5.Cif ");
+        System.out.println("6.Invoice Total ");
     }
 }
