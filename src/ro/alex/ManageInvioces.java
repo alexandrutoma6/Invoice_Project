@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManageInvioces {
-
-
     public static List<Invoice> invoices = new ArrayList<>();
 
     public static void printInvoices(){
@@ -14,7 +12,7 @@ public class ManageInvioces {
             System.out.println("------------------");
             System.out.println("INDEX : " + x);
             System.out.println();
-            System.out.println(invoice.serialNumber);
+            System.out.println(invoice.getSerialNumber());
             System.out.println(invoice.companyName);
             System.out.println(invoice.address);
             System.out.println(invoice.date);
